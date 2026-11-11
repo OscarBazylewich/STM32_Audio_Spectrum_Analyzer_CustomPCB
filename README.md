@@ -8,8 +8,6 @@ This repository contains a small KiCad board (4 layers) for an audio spectrum an
 
 <p align="center">
   <img width="800" alt="KiCad 3D render of the top side of the board. The outline of the Waveshare 2inch LCD Module is on the left side of the board. The MCU, the crystal, the BOOT0 and RESET switches, the Tag-Connect pads, the LDO and the USB-C receptacle are on the right side." src="https://github.com/user-attachments/assets/85aaed98-7ecc-47bb-b375-da99e446172a" />
-  <br />
-  <em>The top side of the board in the KiCad 9.0 3D viewer, with all 3D models loaded.</em>
 </p>
 
 This project uses an STM32L4Q5CGT6 microcontroller (MCU) to decrease the dimensions of the board. This MCU also has almost the same functions as most STM32 performance-line MCUs from ST that are applicable to this project. The initial prototype used a Nucleo-F767ZI board (refer to [Related projects](#related-projects)).
@@ -76,8 +74,6 @@ The power pins are:
 - U3 pin 2 and J2 pin 5 are GND.
 - On the microphone, pin 5 is VDD (+3V3) and pin 3 is GND. LR (pin 2) connects to GND.
 
-The schematic gives only the interface names (SPI or SAI), not the peripheral names. The peripheral names in parentheses in the table are from the KiCad STM32L4Q5CGTx symbol.
-
 ### Board
 
 - 94.5 x 39.7 mm, with 1 mm rounded corners and four M3 mounting holes
@@ -90,8 +86,8 @@ The schematic gives only the interface names (SPI or SAI), not the peripheral na
 - **Power path.** VBUS from the USB-C receptacle goes through a 2.2 µH series inductor (L1) into the SPX3819 LDO. Each side of L1 has a 2.2 µF capacitor. The LDO is on when USB power is available, because its EN pin connects to its input. One +3V3 rail supplies power to all items on the board: VDD, VDDA, VDDUSB, the Waveshare 2inch LCD Module and the microphone. VBAT also connects to +3V3, and the board has no battery for VBAT.
 - **USB.** 5.1 kΩ pull-down resistors on CC1 and CC2 identify the board as a USB sink. D+ and D- go through the USBLC6-2SC6 to PA12 and PA11. The SBU pins have no connection.
 - **Clock.** A 16 MHz crystal with C0G load capacitors (10 pF) connects to PH0/PH1. The crystal footprint has a front-copper keep-out area. This area prevents copper pour below the crystal. The board has no 32.768 kHz LSE crystal (PC14/PC15 have no connection).
-- **Microphone.** The ICS-43434 is on the bottom side. Its footprint has a 0.5 mm hole through the board for the acoustic port of the microphone. WS, SCK and SD connect to PB12, PB13 and PB15.
-- **Display.** The board has a pin header footprint for the Waveshare 2inch LCD Module. This LCD module was available before the project, and it connects directly to the pin header. The board has a silkscreen outline with the label "2inch LCD Module". The board also has four 3.2 mm holes for the mounting holes of the LCD module. The LCD module is on the left two-thirds of the board, and all other parts are on the right third.
+- **Microphone.** The footprint of the ICS-43434 has a 0.5 mm hole through the board for the acoustic port of the microphone. WS, SCK and SD connect to PB12, PB13 and PB15.
+- **Display.** The board has a pin header footprint for the Waveshare 2inch LCD Module. The board has a silkscreen outline with the label "2inch LCD Module". The board also has four 3.2 mm holes for the mounting holes of the LCD module. The LCD module is on the left two-thirds of the board, and all other parts are on the right third.
 - **BOOT0 and RESET.** S1 connects BOOT0 (PH3) to +3V3. When S1 is open, a 10 kΩ resistor keeps BOOT0 low. S2 connects NRST to GND. Each of the two lines has a 100 nF filter capacitor.
 
 ## How to start
